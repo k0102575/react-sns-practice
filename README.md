@@ -1,2 +1,11 @@
 # react-sns-practice
-react sns login practice
+
+### SNS
+
+- NAVER
+
+### Stack
+
+- react 17
+- emotion 11
+- axios
