@@ -7,5 +7,5 @@
 ### Stack
 
 - react 17
-- emotion 11
+- styled-component
 - axios
