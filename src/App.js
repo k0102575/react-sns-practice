@@ -1,41 +1,18 @@
-import { useEffect, useRef } from 'react';
-import styled from 'styled-components';
-
-const NaverButton = styled.div`
-  display: none;
-`;
+import { Route, Routes } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import Home from './Home';
+import CallBack from './CallBack';
 
 function App() {
-  const { naver } = window;
-
-  const naverRef = useRef();
-
-  const handleClick = () => {
-    naverRef.current.children[0].click();
-  };
-
-  useEffect(() => {
-    const { REACT_APP_NAVER_CLIENT_ID, REACT_APP_NAVER_CALLBACK_URL } =
-      process.env;
-
-    const naverLogin = new naver.LoginWithNaverId({
-      clientId: REACT_APP_NAVER_CLIENT_ID,
-      callbackUrl: REACT_APP_NAVER_CALLBACK_URL,
-      isPopup: false,
-      loginButton: { color: 'green', type: 3, height: 60 },
-    });
-
-    naverLogin.init();
-    naverLogin.logout();
-  }, [naver]);
-
   return (
-    <>
-      <NaverButton id="naverIdLogin" ref={naverRef}></NaverButton>
-      <button type="button" onClick={handleClick}>
-        인증
-      </button>
-    </>
+    <BrowserRouter>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/callback" element={<CallBack />}></Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
